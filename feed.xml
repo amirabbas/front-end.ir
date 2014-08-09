@@ -3,10 +3,10 @@
   <channel>
     <title>front-end</title>
     <description>اینجا درباره موضوعاتی در حوزه طراحی اینترفیس وب سایت می نویسم.</description>
-    <link>//</link>
-    <atom:link href="//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 09 Aug 2014 16:19:48 +0100</pubDate>
-    <lastBuildDate>Sat, 09 Aug 2014 16:19:48 +0100</lastBuildDate>
+    <link>http://front-end.ir/</link>
+    <atom:link href="http://front-end.ir/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sat, 09 Aug 2014 16:30:53 +0100</pubDate>
+    <lastBuildDate>Sat, 09 Aug 2014 16:30:53 +0100</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
     
       <item>
@@ -20,8 +20,8 @@
 &lt;p&gt;امیدوارم این بار نوشتن برایم موقت و گذری نباشد. &lt;/p&gt;
 </description>
         <pubDate>Sat, 09 Aug 2014 00:00:00 +0100</pubDate>
-        <link>//discussion/introduction</link>
-        <guid isPermaLink="true">//discussion/introduction</guid>
+        <link>http://front-end.ir/discussion/introduction</link>
+        <guid isPermaLink="true">http://front-end.ir/discussion/introduction</guid>
         
         
         <category>discussion</category>
