@@ -5,8 +5,8 @@
     <description>اینجا درباره موضوعاتی در حوزه طراحی اینترفیس وب سایت می نویسم.</description>
     <link>http://front-end.ir/</link>
     <atom:link href="http://front-end.ir/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 16 Aug 2014 13:21:39 +0100</pubDate>
-    <lastBuildDate>Sat, 16 Aug 2014 13:21:39 +0100</lastBuildDate>
+    <pubDate>Sat, 16 Aug 2014 13:29:59 +0100</pubDate>
+    <lastBuildDate>Sat, 16 Aug 2014 13:29:59 +0100</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
     
       <item>
@@ -44,8 +44,8 @@
 &lt;p&gt;اگرفرصتی شد درباره نصب جکیل بر روی ویندوز و استفاده ساده از آن در آینده می‌نویسم.&lt;/p&gt;
 </description>
         <pubDate>Tue, 12 Aug 2014 00:00:00 +0100</pubDate>
-        <link>http://front-end.ir/webdesign/why-i-have-chosen-jakyll</link>
-        <guid isPermaLink="true">http://front-end.ir/webdesign/why-i-have-chosen-jakyll</guid>
+        <link>http://front-end.ir/webdesign/why-i-have-chosen-jekyll</link>
+        <guid isPermaLink="true">http://front-end.ir/webdesign/why-i-have-chosen-jekyll</guid>
         
         <category>jekyll blog</category>
         

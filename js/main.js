@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-	$('.sidebar-btn, .sidebar-close').click(function() {
+	$('.sidebar-btn').click(function() {
 		$('body').toggleClass('sidebar-reveal');
 	});
 });
