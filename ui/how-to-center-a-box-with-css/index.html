@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" dir="rtl"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" dir="rtl"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" dir="rtl"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js" dir="rtl"> <!--<![endif]-->
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>تمامی شیوه‌های موجود برای در مرکز قرار دادن یک box با CSS</title>
+    
+    <meta name="description" content="شیوه‌های زیادی برای در مرکز قرار دادن یک box در CSS وجود دارد. در این مقاله این شیوه‌ها را بررسی می‌کنیم." />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="http://front-end.ir/ui/how-to-center-a-box-with-css">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+
+    <body>
+    
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="page-wrapper"><header class="header clearfix">
+         
+  <h1 class="logo"><a href="/"><span>Front-End</span></a></h1>
+
+</header>
+
+            <ul class="important-links clearfix">
+                <li class="sidebar-btn"><i class="icon-three-bars"></i></li>
+                <li class="rss-btn"><a href="/feed.xml"><i class="icon-rss"></i></a></li>
+                <li class="about-me-btn"><i class="icon-user"></i></li>
+            </ul>
+            <div class="container clearfix">
+            
+                <div class="content">
+                  <article class="post">
+	<header>
+	  <h1>تمامی شیوه‌های موجود برای در مرکز قرار دادن یک box با CSS</h1>
+	</header>
+    <div class="meta clearfix">
+  <div class="clearfix"><div><i class="icon-user"></i><span class="author">امیرعباس عبدالعلی</span> &nbsp;&nbsp;</div><div><i class="icon-clock"></i><span class="date">Aug 19, 2014</span></div></div>
+</div>
+	<div class="post-content">
+	  <p>یکی از مواردی که در طراحی زیاد با آن مواجه می‌شویم٬‌ در مرکز قراردادن یک  box در طرح است. فکر نمی‌کنم از خوانندگان این مطلب کسی باشد که نداند چطور می‌توان یک باکس را در مرکز یک باکس دیگر یا در مرکز صفحه قرار داد. به جرات می‌توان گفت که محال است که طراحی انجام دهید و لازم نباشد که باکسی را در مرکز صفحه قرار دهید. انجام این کار تنها با یک خط CSS امکان پذیر است. مشکل زمانی بروز می‌کند که تصمیم می‌گیریم یک باکس را به شکل عمودی در مرکز صفحه قرار دهیم. شیوه‌های بسیار زیادی برای حل این مشکل وجود دارد که که اینجا همه را بررسی می‌کنیم. هر شیوه مزایا و معایب خاص خود را دارد و باید بنا به شرایط موجود یک شیوه را انتخاب کنید.  </p>
+
+<p>اگر بخواهیم یک باکس را به شکل افقی در مرکز قرار دهیم کافیست که در کد خود این دستور را بنویسید:</p>
+
+<div>
+  <pre data-line=""><code class="language-css">.container {
+	margin: 0 auto;
+}</code></pre>
+</div>
+
+<p>وقتی باکس ما position نداشته باشد٬ اگر از <code>margin: auto;</code> استفاده کنیم٬ مرورگر آن را صفر در نظر می‌گیرد. زمانی که یک باکس در جریان کلی صفحه قرار گرفته باشد٬ اگر از <code>margin: auto;</code> استفاده کنیم٬‌ مرورگر برای سمت بالا و پایین مقدار صفر را در نظر خواهد گرفت.
+نخست سراغ شیوه اول که راحت‌ترین راه است می‌رویم:</p>
+
+<h2 id="margin-">۱. استفاده از طول و عرض ثابت و margin منفی</h2>
+<p>همانطور که ذکر کردم٬‌ این شیوه راحت‌ترین راه است و بهترین ساپورت را هم دارد ولی ایراداتی دارد که در ادامه توضیح خواهم داد. برای رسیدن به این جلوه باید باکس مورد نظر ما <code>position: absolute;</code> داشته باشد. سپس از <code>top: 50%;</code> و <code>left: 50%;</code> استفاده می‌کنیم. از آنجاییکه مقدار %50 از گوشه‌ی بالا و سمت چپ باکس حساب می‌شود در نتیجه باکس در مرکز قرار نمی‌گیرد. برای حل مشکل از margin منفی معادل نصف طول و عرض باکس استفاده می‌کنیم. به این شکل:</p>
+
+<div>
+  <pre data-line=""><code class="language-css">.box {
+	width: 300px;
+	height: 200px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -100px;
+	margin-left: -150px;
+}</code></pre>
+</div>
+
+<p>از آنجاییکه هیچ پوزیشنی برای والد در نظر گرفته نشده. باکس نسبت به دیواره‌های مرورگر تنظیم شده و در مرکز قرار می‌گیرد ولی در صورت نیاز می‌توانید باکس را در داخل یک container قرار دهید که <code>postion: relative;</code> دارد. در اینجا باکس داخلی به نسبت دیواره‌های عنصر والدش منظم می‌شود. نمونه عملی بدین شکل خواهد بود:</p>
+
+<p data-height="350" data-theme-id="0" data-slug-hash="utqzh" data-default-tab="result" class="codepen">See the Pen <a href="http://codepen.io/amir-abbas/pen/utqzh/">utqzh</a> by amir-abbas abdolali (<a href="http://codepen.io/amir-abbas">@amir-abbas</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async="" src="//codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="section">مزایای این شیوه</h3>
+<ol>
+  <li>آسان بودن و پیاده‌سازی بی دردسر</li>
+  <li>پشتیبانی خیلی خوب در مرورگرهای بسیار قدیمی مثل IE6,7</li>
+</ol>
+
+<h3 id="section-1">معایب این شیوه</h3>
+<ol>
+  <li>احتیاج به تعریف عرض و ارتفاع ثابت برای باکس در نتیجه عدم پشتیبانی از طراحی Responsive</li>
+  <li>عدم پشتیبانی از <code>max-width</code>, <code>max-height</code>, <code>min-width</code> و <code>min-height</code></li>
+</ol>
+
+<h2 id="css-transform--center--box">۲. استفاده از CSS Transform برای Center کردن Box</h2>
+
+<p>این شیوه تقریبا جدید‌تر است و از تکنیک به روزتری استفاده می‌کند. اولین بار در سایت <a href="http://tympanus.net/codrops/2013/06/25/nifty-modal-window-effects/">codrops</a> در یکی از آموزش‌ها از این افکت استفاده شد. این شیوه نسبت به مدل قبل مزایایی هم دارد ولی در عین حال معایبی هم دارد که به آنها می‌پردازیم. در این شیوه باز هم باکس ما باید <code>position: absolute;</code> باشد و از top و right با مقدار %50 استفاده می‌کنیم منتها به جای استفاده از margin با مقادیر منفی از transform و فانکشن translate با مقدار منفی برای محور افقی و عمودی استفاده می‌کنیم. کدی که در اینجا استفاده می‌‌شود مشابه این کد است:</p>
+
+<div>
+  <pre data-line=""><code class="language-css">.box {
+	width: 60%;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	overflow: auto;
+	transform: translate(-50%, -50%);
+}</code></pre>
+</div>
+
+<p>این شیوه شباهت‌هایی با شیوه قبل دارد ولی در اینجا ما از transform برای جابجایی باکس استفاده کردیم. در حالت عادی <code>transform-origin</code> در مرکز باکس است به همین خاطر زمانی که از مقدار %50 برای translate استفاده می‌کنیم٬ مرکز باکس برای محاسبه این مقدار مورد استفاده قرار می‌گیرد و باکس کاملا در مرکز نمایش داده می‌شود. این شیوه مزایای دیگری هم دارد. یکی از مزایای خوبش پشتیبانی از طراحی ریسپانسیو است. نمونه کد را ببینید:</p>
+
+<p data-height="350" data-theme-id="0" data-slug-hash="ubiJB" data-default-tab="result" class="codepen">See the Pen <a href="http://codepen.io/amir-abbas/pen/ubiJB/">ubiJB</a> by amir-abbas abdolali (<a href="http://codepen.io/amir-abbas">@amir-abbas</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async="" src="//codepen.io/assets/embed/ei.js"></script>
+
+<p>در این شیوه می‌توانید به باکس خود min-width یا max-width و یا min-height و max-height هم بدهید که باکس از نظر عرض و ارتفاع از حد خاصی بزرگتر و یا کوچکتر نشود. همینطور اگر از خصوصیت resize: both بر روی باکس مورد نظر استفاده کنید٬‌ باکس را می ‌توانید با کمک handler گوشه باکس کشیده و بزرگ و کوچک کنید و در همه حال باکس در دو جهت عمودی و افقی در مرکز می‌ماند.</p>
+
+<h3 id="section-2">مزایای این شیوه</h3>
+<ol>
+  <li>پشتیبانی از طراحی واکنش‌گرا (Responsive)</li>
+  <li>پشتیبانی از ارتفاع و عرض متغییر برای باکس (تعریف مقدار درصدی برای عرض و ارتفاع باکس امکان‌پذیر است)</li>
+  <li>ساده بودن در پیاده سازی</li>
+  <li>پشتیبانی از overflow: auto برای جلوگیری از بیرون زدن متن از باکس در زمانی که محتوا بیشتر از عرض و ارتفاع باکس است.</li>
+  <li>عدم نیاز به تعریف height برای باکس مورد نظر</li>
+</ol>
+
+<h3 id="section-3">معایب این شیوه</h3>
+<ol>
+  <li>عدم پشتیبانی از مرورگرهای قدیمی مانند IE8</li>
+  <li>استفاده از transform برای دادن افکت‌های دیگر به این باکس ممکن است باعث تداخل و به هم ریختن آن شود.</li>
+</ol>
+
+<h2 id="position-absolute----top-bottom-right--left">۳. استفاده از position: absolute و چهار خصوصیت top, bottom, right و left</h2>
+
+<p>این شیوه امکانات زیادی در اختیار شما قرار می‌دهد ولی از طرفی یک مشکل خاص دارد که شاید نتوان در همه جا از آن استفاده کرد و آن هم این است که حتما باید برای باکس مورد نظرمان height تعریف کنیم. در این شیوه باز هم از همان <code>position: absolute;</code> استفاده می‌کنیم ولی در کنار آن از top, left, bottom و right با مقدار صفر استفاده می‌کنیم. هر زمان که شما باکسی را با دستور <code>position: absolute;</code> موقعیت‌دهی کنید و از مقادیر top, bottom, right و left با مقدار صفر استفاده کنید٬‌ اگر باکس مورد نظر شما هیچ عرض و ارتفاع تعریف‌شده ای نداشته باشد٬‌ باکس مورد نظر کش آمده و از چهار طرف به دیواره‌های والد خود می‌چسبد. حال برای اینکه باکس کش نیاید می‌توانیم طول و عرض دلخواه خود را به آن بدهیم تا باکس‌مان در مرکز صفحه نمایش داده شود. نتیجه چیزی شبیه به کد زیر است:</p>
+
+<div>
+  <pre data-line=""><code class="language-css">.box {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 60%;
+	height: 50%;
+	margin: auto;
+	overflow: auto;
+}</code></pre>
+</div>
+
+<p>در اینجا چون باکس ما <code>position: absolute;</code> است در نتیجه از جریان کلی صفحه خارج شده و به شکل مستقل نمایش داده می‌شود از این رو اگر از دستور <code>margin: auto;</code> استفاده کنیم باکس ما از هر چهار سمت فاصله خود را با دیواره‌های والد حفظ کرده در نتیجه در مرکز قرار می‌گیرد. از خوبی‌های این شیوه این است که از طراحی ریسپانسیو پشتیبانی می‌کند و با کم شدن عرض صفحه٬ عرض باکس هم کاهش می‌یابد (به شرطی که به شکل درصدی تعیین شده باشد) و همینطور می‌توانیم از -min و -max را برای height و width استفاده کنیم تا باکس ما از عرض و ارتفاعی خاص٬ بزرگتر و یا کوچکتر نشود. </p>
+
+<p data-height="381" data-theme-id="0" data-slug-hash="vBIum" data-default-tab="result" class="codepen">See the Pen <a href="http://codepen.io/amir-abbas/pen/vBIum/">vBIum</a> by amir-abbas abdolali (<a href="http://codepen.io/amir-abbas">@amir-abbas</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async="" src="//codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="section-4">مزایای این شیوه</h3>
+
+<ol>
+  <li>پشتیبانی از مرورگرهای قدیمی مانند IE8</li>
+  <li>آسان بودن و پیاده سازی سریع</li>
+  <li>پشتیبانی از طراحی Responsive</li>
+  <li>عدم بروز مشکل در زمانی که مستقیما به خود باکس padding بدهید</li>
+  <li>از همین تکنیک برای تصاویر هم می‌توان استفاده کرد</li>
+</ol>
+
+<h3 id="section-5">معایب این شیوه</h3>
+
+<ol>
+  <li>حتما باید باکس مورد نظر ما height مشخص داشته باشد</li>
+  <li>این شیوه بر روی ویندوز فون کار نمی‌کند.</li>
+</ol>
+
+<h2 id="table-cell">۴. استفاده از دستور table-cell</h2>
+
+<p>این شیوه از دستورات قدیمی CSS استفاده می‌کند و یکی از بهترین پشتیبانی‌ها را دارد ولی در کنار پشتیبانی خوب ایرادی هم دارد و آن هم این است که برای استفاده از این شیوه باید تگ HTML ای را به عنوان wrapper به باکس خود اضافه کنید. البته اغلب این اتفاق به شکل کلی در طراحی می‌افتد. کدی که برای این تکنیک می‌شود بدین شکل است:</p>
+
+<div>
+  <pre data-line=""><code class="language-markup">&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;box-wrapper&quot;&gt;
+    &lt;div class=&quot;box&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+        &lt;!-- محتوا در اینجا قرار می‌گیرد --&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt; 
+&lt;/div&gt;</code></pre>
+</div>
+
+<div>
+  <pre data-line=""><code class="language-css">.container {
+	display: table;
+}
+
+.box-wrapper {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.box {
+	width: 50%;
+	margin: 0 auto;
+}</code></pre>
+</div>
+
+<p>اولین بار با دستور <code>display: table;</code> و <code>display: table-cell;</code> در کتاب <a href="http://www.sitepoint.com/store/everything-you-know-about-css-is-wrong/">everything you know about CSS is wrong</a> آشنا شدم. این کتاب را سال‌ها قبل انتشارات سایت‌پوینت منتشر کرد و نویسندگان سعی داشتند که قابلیت‌های این دو دستور و متعلقات آن را توضیح بدهند و طراحان را به این سمت سوق بدهد که به جای استفاده از float از این دستور برای طراحی ساختار صفحه استفاده کنند که البته موفق نبودند و این کتاب هم با استقبال زیادی مواجه نشد. این تکنیک از این جهت جالب توجه است که پشتیبانی خوبی از مرورگرهای قدیمی دارد و از طراحی ریسپانسیو هم پشتیبانی می‌کند. نمونه عملی کد را اینجا می‌توانید ببینید:</p>
+
+<p data-height="325" data-theme-id="0" data-slug-hash="aGvBp" data-default-tab="result" class="codepen">See the Pen <a href="http://codepen.io/amir-abbas/pen/aGvBp/">aGvBp</a> by amir-abbas abdolali (<a href="http://codepen.io/amir-abbas">@amir-abbas</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async="" src="//codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="section-6">مزایای این شیوه</h3>
+
+<ol>
+  <li>پشتیبانی از طراحی Responsive</li>
+  <li>پشتیبانی خیلی خوب از مرورگرهای قدیمی</li>
+  <li>عدم نیاز به تعریف عرض و یا ارتفاع ثابت برای باکس</li>
+</ol>
+
+<h3 id="section-7">معایب این شیوه</h3>
+
+<ol>
+  <li>نیاز به اضافه کردن کد HTML به صفحه</li>
+</ol>
+
+<h2 id="display-inline-block">۵. استفاده از display: inline-block</h2>
+
+<p>این شیوه در سایت <a href="http://css-tricks.com/centering-in-the-unknown/">CSS-Tricks</a> توضیح داده شده است. این متد شباهت‌های زیادی به متد قبلی دارد ولی مانند متد قبل احتیاجی به اضافه کردن کد HTML اضافه به محتوای صفحه ندارد. در این تکنیک از <code>display: inline-block;</code> استفاده می‌شود. زمانی که از دستور فوق استفاده کنید و <code>width: 100%;</code> تنظیم کنید٬ باکس شما مانند عناصر block دیگر کل عرض صفحه را اشغال نخواهد کرد و تنها به اندازه عرض محتوا کش خواهد آمد. برای حل این مشکل به جای استفاده از table از inline-block استفاده می‌کنیم و با استفاده از یک <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">pseudo element</a> «بخوانیم سودو المنت» یک عنصر به داخل container اضافه می‌کنیم و ارتفاعش را %100 تنظیم می‌کنیم که ارتفاع والد را کاملا اشغال کند سپس هم به این pesudo element و هم به باکس داخل container دستور <code>display: inline-block;</code> و <code>vertical-align: middle;</code> را می‌دهیم. کد ما چیزی شبیه به این خواهد بود:</p>
+
+<div>
+  <pre data-line=""><code class="language-css">.container {
+	text-align: center;
+}
+
+.container:before {
+	content: &quot;&quot;;
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.box {
+	width: 50%;
+	display: inline-block;
+	vertical-align: middle;  
+	text-align: right;
+}</code></pre>
+</div>
+
+<p data-height="350" data-theme-id="0" data-slug-hash="okGyp" data-default-tab="result" class="codepen">See the Pen <a href="http://codepen.io/amir-abbas/pen/okGyp/">okGyp</a> by amir-abbas abdolali (<a href="http://codepen.io/amir-abbas">@amir-abbas</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async="" src="//codepen.io/assets/embed/ei.js"></script>
+
+<p>البته در مقاله‌ی سایت CSS-Tricks پیشنهاد شده که <code>margin-right: -0.25em;</code> را هم به سودو المنت اضافه کنیم تا باکس کاملا در مرکز قرار بگیرد ولی در کدی که من به عنوان sample آماده کرده‌ام به نظر می‌رسد که باکس در مرورگر کروم بدون نیاز به دستور بالا کاملا در مرکز قرار گرفته است. </p>
+
+<h3 id="section-8">مزایای این شیوه</h3>
+
+<ol>
+  <li>پشتیبانی از عرض و ارتفاع متغیر در نتیجه پشتیبانی از طراحی Responsive</li>
+  <li>پشتیبانی تقریبا خوب از مرورگرهای قدیمی (IE8 و بالاتر) </li>
+</ol>
+
+<h3 id="section-9">معایب این شیوه</h3>
+
+<ol>
+  <li>احتیاج به وجود یک container برای استفاده از این تکنیک</li>
+</ol>
+
+<h2 id="flexbox">۶. استفاده از flexbox</h2>
+
+<p>این متد مدرن‌ترین متد محسوب می‌شود و پشتیبانی از آن در مرورگرهای قدیمی بسیار ضعیف است. البته flexbox چیزی فرای در مرکز قرار دادن یک باکس است و با استفاده از flexbox می‌توان چینش‌های پیچیده‌ای ایجاد کرد که قبلا ممکن نبود و flexbox و CSS Regions آینده طراحی layout با CSS محسوب می‌شوند. برای آشنایی بیشتر با flexbox پیشنهاد می‌کنم این مطلب از سایت <a href="http://www.smashingmagazine.com/2013/05/22/centering-elements-with-flexbox/">smashing magazine</a> را بخوانید یا فیلم آموزشی <a href="http://www.lynda.com/CSS-tutorials/CSS-Flexbox-First-Look/116352-2.html">CSS Flexbox First Look</a> از شرکت لیندا را ببینید. کدی که برای استفاده از flexbox استفاده می‌کنیم بدین شکل است:</p>
+
+<div>
+  <pre data-line=""><code class="language-css">.container {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-moz-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+}</code></pre>
+</div>
+
+<p>همانطور که می‌بینید تعداد زیادی دستور به همراه vendor prefix در این تکه کد وجود دارد. flexbox از جمله استانداردهایی بود که در طول زمان بارها تغییر کرد و هر بار تعدادی از مرورگرها یکی از این ساختارها را پشتیبانی کردند. در مجموع برای flexbox یک فرمت قدیمی وجود دارد که نسخه‌های قدیمی فایرفاکس و سافاری و نسخه های قدیمی iOS از آن پشتیبانی می‌کنند. سپس نسخه ای دیگر از آماده شد که به نسخه tweener معروف است و این نسخه توسط IE10 پشتیبانی شده است و بعد از آن نسخه نهایی که به شکل استاندارد درآمده ارائه شد که تمامی مرورگرهای مدرن از این الگوی سوم استفاده می‌کنند. در مجموع برای استفاده از flexbox باید تمامی این دستورات را در کنار هم داشته باشید تا مطمئن شوید که نسخه‌های قدیمی مرورگرها نیز می‌توانند سایت شما را درست نمایش دهند.</p>
+
+<p data-height="310" data-theme-id="0" data-slug-hash="bwigp" data-default-tab="result" class="codepen">See the Pen <a href="http://codepen.io/amir-abbas/pen/bwigp/">bwigp</a> by amir-abbas abdolali (<a href="http://codepen.io/amir-abbas">@amir-abbas</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async="" src="//codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="section-10">مزایای این شیوه</h3>
+
+<ol>
+  <li>انعطاف پذیری بالا و اجازه داده به طراح برای ایجاد جلوه های پیچیده تر</li>
+  <li>عدم نیاز به تعیین عرض و ارتفاع برای باکس و در نتیجه پشتیبانی از طراحی ریسپانسیو</li>
+</ol>
+
+<h3 id="section-11">معایب این شیوه</h3>
+
+<ol>
+  <li>این تکنیک فقط در مرورگرهای جدید پشیبانی می‌شود (عدم پشتیبانی در IE9 و پایین تر)</li>
+  <li>الگوی قدیمی و tweener از نظر سرعت می‌توانند گاهی کند باشد. </li>
+  <li>دستورات CSS زیاد و گیج کننده برای پشتیبانی از تمامی مرورگرهای موجود</li>
+</ol>
+
+<h2 id="section-12">کدام شیوه را انتخاب کنم؟</h2>
+
+<p>همانطور که می‌بینید هیچ شیوه کاملی وجود ندارد. باید بر اساس نیاز خود و شرایط پروژه بسنجید که کدام بیشتر برای شما مناسب است. اگر بخواهید مرورگرهای قدیمی را پشتیبانی کنید باید به سمت استفاده از ترفند های ۱٬۳٬۴٬۵ بروید و اگر دنبال شیوه‌های مدرن تر هستید و یا انعطاف بیشتری نیاز دارید شیوه‌های ۲٬۶ می‌توانند گزینه‌های خوبی باشند. اگر عرض و ارتفاع ثابت برایتان اهمیتی نداشته باشد می‌توانید از ترفند‌های ۱و ۳ استفاده کنید و در صورتی که ریسپانسیو بودن برایتان اهمیت دارد متدهای ۲٬۴٬۵٬۶ برایتان مناسب تر است. </p>
+
+<p>در صورتی که شیوه‌ی دیگری می‌شناسید که در این لیست نیامده در کامنت‌ها اطلاع دهید تا به مطلب اضافه شود.</p>
+
+
+	</div>
+	<footer class="post-footer">
+      
+      
+    </footer>
+    
+</article>          
+                </div>
+            
+                <aside class="sidebar">
+<a href="#" class="sidebar-close"><i class="icon-cancel"></i></a>
+     <section class="widget monthly-archive">
+        <h1>آرشیو ماهانه</h1>
+     	  
+    
+    
+        
+            
+            <h2>August 2014</h2>
+            <ul>
+        
+    <li><a href="/ui/how-to-center-a-box-with-css">تمامی شیوه‌های موجود برای در مرکز قرار دادن یک box با CSS - <time>19 Aug</time></a></li>
+    
+
+    
+    
+        
+    <li><a href="/webdesign/why-i-have-chosen-jekyll">چرا تصمیم گرفتم از Jekyll استفاده کنم - <time>12 Aug</time></a></li>
+    
+
+    
+    
+        
+    <li><a href="/discussion/introduction">جایی برای نوشتن - <time>09 Aug</time></a></li>
+    
+
+
+     </section>          
+</aside>
+                   
+            </div>
+            <footer class="page-footer clearfix">
+          <p>ایجاد شده با کمک <a href="http://jekyllrb.com/"><i class="icon-jekyll-logo"></i></a> و <a href="https://github.com/"><i class="icon-logo-github"></i></a></p>
+        </footer>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="/js/plugins.js"></script>
+        <script src="/js/main.js"></script>
+         
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-53676725-1');ga('send','pageview');
+        </script>
+        </div>
+            <section class="modal">
+    <span class="modal-close"><i class="icon-cancel"></i></span>
+    <div class="modal-content-wrapper">
+        <div class="modal-header">
+            <h1>امیرعباس عبدالعلی</h1>
+            <p>طراح Interface وب سایت٬ مدرس و مترجم</p>
+        </div>
+        <div class="modal-content">
+            <p>در صورتی که برای کسب و کار خود احتیاج به واسط کاربری جدید و کارامد دارید٬‌ در قدم اول می‌‌توانم به شما خدمات مشاوره ارائه کنم. اگر پروژه شما بزرگ بوده و به شخصی برای نظارت و مدیریت بخش طراحی اینترفیس٬ ایده پردازی و پیاده سازی احتیاج داشته باشید٬ در صورت فراهم بودن شرایط٬ به شکل پاره‌وقت می‌توانم به شما کمک کنم.</p>
+            <ul class="my-social-accounts clearfix">
+                <li class="email clearfix"><i class="icon-envelope"></i><script type="text/javascript"><!--
+var aaomfyp = ['m','m','i','"','@','b','f','d','<','a','r','l',':','m','h','b','<','r','"','b','i','a','"','a','a','a','s','g','o','c','l','s','.','m','i','=','a','c','b','"','s','l','e','o','a','m','l','i','l','a',' ','o','s','l','.','g','m','a','r','a','.','c','b','l','l','o','i','i','a','m','a','l','m','b','o',' ','@','a','>','d','a','i','i','a','=','e','>','/','.','a','t','a'];var yuscuta = [87,54,82,8,34,71,6,28,88,10,19,12,15,43,3,65,0,4,44,27,11,67,52,64,37,90,49,79,86,85,83,50,25,80,38,51,55,41,21,58,24,76,53,29,48,36,47,62,57,26,45,42,68,74,84,35,9,23,63,20,69,46,66,30,32,14,56,18,81,17,75,39,61,22,73,2,78,31,59,72,70,33,77,1,7,5,91,89,40,16,13,60];var yknoozd= new Array();for(var i=0;i<yuscuta.length;i++){yknoozd[yuscuta[i]] = aaomfyp[i]; }for(var i=0;i<yknoozd.length;i++){document.write(yknoozd[i]);}
+// --></script>
+<noscript>Please enable Javascript to see the email address</noscript></li>
+                <li class="facebook clearfix"><i class="icon-facebook"></i><a href="https://www.facebook.com/amirabbas.abdolali">Facebook</a></li>
+                <li class="twitter clearfix"><i class="icon-twitter"></i><a href="https://twitter.com/amir_abbas">Twitter</a></li>
+                <li class="instagram clearfix"><i class="icon-instagram"></i><a href="http://instagram.com/_amirabbas_">Instagram</a></li>
+                <li class="gplus clearfix"><i class="icon-googleplus"></i><a href="https://plus.google.com/+AmirabbasAbdolali/">Google Plus</a></li>
+            </ul>
+        </div>
+    </div>
+
+</section>
+
+<div class="modal-overlay"></div>
+    </body>
+</html>
