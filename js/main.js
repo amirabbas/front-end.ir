@@ -12,4 +12,14 @@ $(document).ready(function() {
 });
 
 
+$(document).ready(function() {
+	$('.personal-content .inner').masonry({
+		transitionDuration: 0,
+		itemSelector: '.post',
+		isOriginLeft: false,
+	});
+});
+
+
+
 
