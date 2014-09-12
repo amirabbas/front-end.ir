@@ -5,9 +5,303 @@
     <description>اینجا درباره موضوعاتی در حوزه طراحی اینترفیس وب سایت می نویسم.</description>
     <link>http://front-end.ir/</link>
     <atom:link href="http://front-end.ir/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 29 Aug 2014 09:56:40 +0100</pubDate>
-    <lastBuildDate>Fri, 29 Aug 2014 09:56:40 +0100</lastBuildDate>
+    <pubDate>Fri, 12 Sep 2014 19:41:17 +0100</pubDate>
+    <lastBuildDate>Fri, 12 Sep 2014 19:41:17 +0100</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
+    
+      <item>
+        <title>ارجحیت در دستورات CSS</title>
+        <description>&lt;p&gt;&lt;img src=&quot;http://front-end.ir/post-images/sep-2014/css-specificity.jpg&quot; alt=&quot;ارجحیت دستورات CSS&quot; class=&quot;img-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;یکی از مواردی که در طول این چند سالی که کار طراحی انجام می‌دهم همه روزه با آن درگیر بودم و دانستنش رو از ملزومات کار طراحی می‌دانم٬‌ ارجحیت دستورات CSS یا همان Specificity است. شما هر پروژه ای انجام دهید حتی اگر آن پروژه بسیار کوچک هم که باشد باز هم ممکن است در بخشی از کار با ارجحیت دستورات مواجه شوید و داشتن درک درست از این ویژگی در CSS به شما کمک بسیاری می‌کند تا اشکالاتی که گاها به واسطه ارجحیت دستوات به وجود می‌آید را برطرف کنید.&lt;/p&gt;
+
+&lt;p&gt;CSS به شکلی طراحی شده است که در صورت وجود تناقض در کد شما و اعمال دو استایل مختلف به یک عنصر٬‌ دستوری که بر اساس یک اصول از پیش تعیین شده٬ قدرت بالاتری دارد به عنصر مورد نظر اعمال می‌شود. مثال ساده‌ای می‌زنم. فرض کنید در بخشی از فایل css خود از دستور &lt;code&gt;font-size: 1.2em;&lt;/code&gt; استفاده کرده باشید٬ حال در بخش دیگری از کد دوباره به همان عنصر قبلی &lt;code&gt;font-size: 1.4em;&lt;/code&gt; را اختصاص می‌دهید. اینجا باید مرورگر تصمیم بگیرد که دستور اول را به کد شما اعمال کند یا دستور دوم را. در این مقاله به طور مفصل در این باره بحث می‌کنیم.&lt;/p&gt;
+
+&lt;h2 id=&quot;css&quot;&gt;دستورات با وزن یکسان داخل یک فایل CSS&lt;/h2&gt;
+
+&lt;p&gt;مورد اول که گاهی از روش اشتباه و سهوا اتفاق می‌افتد این است که شما یک کلاس مشخص تعریف کرده و به یک عنصر اختصاص داده‌اید٬ حال فراموش می‌کنید و در بخشی دیگر از کد دوباره همان کلاس را می‌نویسید و استایل متفاوتی به آن می‌دهید. مثلا به این شکل&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;.container {
+	font-size: 1.2em;
+}
+
+.
+.
+.
+. 
+
+.container {
+	font-size: 1.4em;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;در اینجا دستوری که پایین‌تر نوشته شده است اعمال خواهد شد. زیرا وزن دستورات دقیقا یکسان است و در CSS در این شرایطی دستوری که داخل فایل CSS٬ پایین‌تر نوشته شده باشد دارای قدرت بیشتری بوده و دستور بالایی را خنثی می‌کند. همین وضعیت می‌تواند داخل یک بلوک دستور CSS هم اتفاق بیافتد به این شکل:&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre data-line=&quot;2,6&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;.container {
+	font-size: 1.2em;
+	color: #222;
+	width: 960px;
+	margin: 0 auto;
+	font-size: 1.4em;
+	box-shadow: 0 0 2px 3px #eee;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;در اینجا خط ۲ و ۶ یک دستور هستند که دوبار تکرار شده اند. موارد مشابه به این زمانی رخ می‌دهد که شما کد را نوشته‌اید و در شرایط خاص در حال ویرایش کد هستید و فراموش می‌کنید که سایز فونت را یکبار در بالای کد نوشته‌اید و آن را دوباره در زیر دستور می‌نویسید. در اینجا هم دستوری که پایین‌تر آمده قوی‌تر است و دستور بالایی را خنثی کرده و خودش اعمال می‌شود. بین دو حالتی که اینجا ذکر شد مورد اول شایع تر است و مورد دوم خیلی کم اتفاق می‌افتد. &lt;/p&gt;
+
+&lt;h2 id=&quot;css-&quot;&gt;دستورات با وزن یکسان داخل فایل‌های CSS مختلف&lt;/h2&gt;
+
+&lt;p&gt;مورد دیگری که باید به آن توجه کنید دستورات مشابهی است که داخل فایل‌های CSS مختلف قرار می‌گیرد. فرض بگیرید که ما دو فایل CSS داریم که بدین شکل به صفحه متصل‌اشان کرده‌ایم:&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-markup&quot;&gt;&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/css/main.css&amp;quot;&amp;gt;
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/css/layout.css&amp;quot;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;حال یک دستور CSS داریم که در فایل اول است که بدین شکل است&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;.important {
+	color: red;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;و دقیقا مشابه به همین دستور را داخل فایل CSS دوم هم داریم:&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;.important {
+	color: orange;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;حال در اینجا کدام دستور اعمال می‌شود؟ در این شرایط هم دستور که در فایل پایین‌تر آمده باشد اعمال خواهد شد. ما اول فایل main.css را به صفحه پیوست کرده‌ایم و بعد از آن فایل layout.css را به صفحه اضافه کرده‌ایم. به خاطر اینکه فایل layout.css بعد از فایل main.css آمده در نتیجه دستورات داخلش ارجحیت داشته و در مثال بالا که وزن دستورات یکسان بود٬ دستوری که در فایل پایین‌تر قرار داشت به صفحه اعمال می‌شود. در اینجا اگر ما ۵ فایل CSS داشتیم محتوای فایل پنجم ارزش بالاتری به نسبت ۴ فایل قبلی دارد و فایل چهارم هم ارزش بالاتری از سه فایل قبلی خود دارد. البته دقت داشته باشید که ما هنوز درباره وزن دستورات صحبت نکرده‌ایم و دستوراتی که نوشتیم هم وزن و کاملا یکسان بوده‌اند. &lt;/p&gt;
+
+&lt;p&gt;جدا از تگ link ما می توانیم با دستور &lt;code&gt;@import&lt;/code&gt; هم یک فایل CSS را به صفحه اضافه کنیم. به عنوان مثال:&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-markup&quot;&gt;&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/css/main.css&amp;quot;&amp;gt;
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/css/layout.css&amp;quot;&amp;gt;
+&amp;lt;style&amp;gt;
+	@import &amp;quot;/css/typography.css&amp;quot;;
+&amp;lt;/style&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;پیشنهاد شده که همیشه تگ style را در زیر تگ‌های  link استفاده کنیم. دستور &lt;code&gt;@import&lt;/code&gt; هم باید داخل تگ style قرار بگیرد و همیشه باید قبل از بقیه دستورات و در بالای تگ style باشد. در اینجا نیز ارجحیت با دستوراتی است که داخل فایلی CSS قرار دارد که با دستور import به صفحه اضافه شده باشند. دقت کنید که تگ style را اگر بالای link ها قرار دهید دیگر ارجحیت با فایل CSS ای که با import به صفحه اضافه شده نیست و آخرین فایل CSS که بعد از همه به صفحه اضافه شده است ارجحیت بالاتر خواهد داشت. البته استفاده از دستور &lt;code&gt;@import&lt;/code&gt; برای اضافه کردن فایل CSS به صفحه به این شکل دیگر مرسوم نیست.&lt;/p&gt;
+
+&lt;p&gt;مورد بعدی هم زمانی است که شما در زیر همان دستور &lt;code&gt;@import&lt;/code&gt; دستورات CSS دیگری بنویسید. بدین شکل:&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-markup&quot;&gt;&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/css/main.css&amp;quot;&amp;gt;
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/css/layout.css&amp;quot;&amp;gt;
+&amp;lt;style&amp;gt;
+	@import &amp;quot;/css/typography.css&amp;quot;;
+	
+	.important {
+		color: blue;
+	}
+	
+&amp;lt;/style&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;در اینجا ارجحیت با دستورات CSS ای است که که بعد از دستور &lt;code&gt;@import&lt;/code&gt; به صفحه اضافه شده اند. باز هم دقت داشته باشید که تا اینجای کار وزن همه دستورات یکسان بوده فقط محل قرارگیری آنها بوده است که تفاوت داشته. از اینجا به بعد وزن دستورات را بررسی می‌کنیم.&lt;/p&gt;
+
+&lt;h2 id=&quot;css-1&quot;&gt;دستورات با وزن‌های مختلف در یک فایل CSS&lt;/h2&gt;
+
+&lt;p&gt;در مثال‌های قبلی تنها درباره دستوراتی صحبت کردیم که وزن یکسانی دارند و تنها محل قرارگیری‌شان متفاوت است. حال می‌خواهیم درباره دستورات با وزن‌های مختلف بحث کنیم. فرض کنید شما داخل صفحه خود ساختاری بدین شکل را دارید:&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-markup&quot;&gt;&amp;lt;div id=&amp;quot;container&amp;quot;&amp;gt;
+  &amp;lt;p class=&amp;quot;text&amp;quot;&amp;gt;متن نمونه برای نشان دادن ارجحیت دستورات&amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;و برای کد بالا دستورات CSS ای بدین شکل نوشته‌اید:&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;#container {
+  color: red;
+}
+
+.text {
+  color: orange;
+}
+
+p {
+  color: green;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;متن ما به چه رنگی نمایش داده خواهد شد؟ قرمز؟ سبز؟ نارنجی؟
+در اینجا ما یک عنصر در صفحه را در دستورات مختلف هدف قرار داده‌ایم و رنگ عنصر مورد نظر ما بر اساس فرمولی خاص توسط مرورگر محاسبه شده و دستوری اعمال خواهد شد که قدرت بیشتری دارد. در این مثال رنگ نارنجی اعمال خواهد شد.&lt;/p&gt;
+
+&lt;p data-height=&quot;260&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;zBawC&quot; data-default-tab=&quot;result&quot; data-user=&quot;amir-abbas&quot; class=&quot;codepen&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/amir-abbas/pen/zBawC/&quot;&gt;zBawC&lt;/a&gt; by amir-abbas abdolali (&lt;a href=&quot;http://codepen.io/amir-abbas&quot;&gt;@amir-abbas&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async=&quot;&quot; src=&quot;//codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;حال ببینم چطور باید وزن هر دستور را حساب کنیم.&lt;/p&gt;
+
+&lt;h2 id=&quot;css-2&quot;&gt;روش محاسبه وزن دستورات CSS&lt;/h2&gt;
+
+&lt;p&gt;محاسبه وزن در CSS بر اساس یک مقدار چهار رقمی است. علامتی که فاقد وزن باشد با مقدار 0,0,0,0 نمایش داده می‌شود.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;کم ارزشترین علائم در CSS در محسابه وزن٬ گزینشگر عمومی یا همان universal selector است که با علامت * نمایش داده می‌شود و عملا وزنی ندارد. جدا از این گزینشگر٬‌ تمامی combinator ها در CSS نیز فاقد وزن هستند. لیست کامل بدین شکل است:
+
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;*‌     /* 0,0,0,0 for universal selector and all css combinators */
++
+~
+&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;تمامی تگ‌های HTML و تمامی &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements&quot;&gt;pseudo element&lt;/a&gt; ها دارای وزن 0,0,0,1 هستند. در مستندات CSS2 مشخص نبود که سودو المنت‌ها وزن دارند یا خیر ولی در نسخه CSS2.1 به طور مشخص تعریف شد که سودو المنت‌ها نیز دارای وزن هستند و وزنشان یک است. لیست تگ‌های HTML را در اینجا نمی آورم ولی لیست سودو المنت ها را درج می‌کنم:
+
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;::after        /* 0,0,0,1 for the all pseudo elements */
+::before
+::first-letter
+::first-line
+::selection&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+سودو المنت‌ها را با دو علامت :: نمایش می‌دهند تا از سودو کلاس‌ها متمایز شوند. البته این قابلیت در مرورگر‌های جدیدتر پشتیبانی شده و در مرورگرهای قدیمی تر از همان یک علامت : پشیتبانی شده است. 
+&lt;/li&gt;
+&lt;li&gt;تمامی کلاس‌ها٬ گزینشگرهای خصیصه یا همان attribute selector ها و همینطور همه &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/pseudo-classes&quot;&gt;pseudo class&lt;/a&gt; دارای وزن 0,0,1,0 هستند. در ادامه لیستی از دو نمونه از گزینشگر‌های خصیصه و لیست کامل سودو کلاس‌ها را می‌آورم:
+
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;.css-class          /* 0,0,1,0  */
+
+a[href$=&amp;quot;http&amp;quot;]   /* 0,0,1,0  */
+div[dir=&amp;quot;rtl&amp;quot;]       /* 0,0,1,0  */
+
+:active               /* 0,0,1,0  for the rest of pseudo classes */
+:checked
+:default
+:dir()
+:disabled
+:empty
+:enabled
+:first
+:first-child
+:first-of-type
+:fullscreen
+:focus
+:hover
+:indeterminate
+:in-range
+:invalid
+:lang()
+:last-child
+:last-of-type
+:left
+:link
+:not()   /* without weight */
+:nth-child()
+:nth-last-child()
+:nth-last-of-type()
+:nth-of-type()
+:only-child
+:only-of-type
+:optional
+:out-of-range
+:read-only
+:read-write
+:required
+:right
+:root
+:scope
+:target
+:valid
+:visited&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+البته دقت کنید که &lt;code&gt;:not()&lt;/code&gt; خودش وزنی ندارد ولی هر چیزی که داخل پرانتزش بیاید فقط وزن همان حساب خواهد شد
+&lt;/li&gt;
+&lt;li&gt;تمامی ID ها در فایل CSS دارای وزن 0,1,0,0 هستند. البته پیشنهاد می‌شود به خاطر وزن بالای آیدی در CSS از آن استفاده نکنیم که در ادامه درباره این موضوع توضیح خواهم داد. &lt;/li&gt;
+&lt;li&gt;پس از موارد قبلی استایل‌های درون خطی یا همان inline styles هستند که بالاترین وزن را دارند و عملا وزنشان معادل 1,0,0,0 خواهد بود. پیشنهاد شده از استایل درون خطی استفاده نشود زیرا از یک سو باعث کثیف شدن کد شما و مخلوط شدن لایه HTML با CSS می‌شود و از سوی دیگر وزنش به قدری بالاست که نمی‌توانید آن را از داخل فایل CSS بازنویسی کنید مگر اینکه از دستور important! استفاده کنید.&lt;/li&gt;
+&lt;li&gt;مورد آخر هم دستور important! است که بیشترین وزن را دارد و اکیدا پیشنهاد می‌شود از آن استفاده نکنید و تنها در مواردی خیلی خاص که هیچ راه دیگری وجود ندارد از این دستور استفاده کنید. وزن این دستور معادل 1,0,0,0,0 است و بالاترین وزن ممکن را دارد. دستوری که important! داشته باشد با هیچ چیز قابل بازنویسی و خنثی سازی نیست مگر اینکه دستور دیگری بنویسید و به آن هم important! بدهید. &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;حالا چند مثال می‌آورم و درباره آنها و شیوه جمع زدن وزن دستورات توضیح می‌دهم:&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;div.container p {...}    /* 0,0,1,2  winner */
+p.important {...}    /* 0,0,1,1 */
+
+.container .content article blockquote {...}     /* 0,0,2,2 */
+blockquote#pullquote {...}     /* 0,1,0,1 winner */&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;در مثال اول ما یک تگ div داریم که وزنش ۱ است و کلاسی به آن اختصاص داده شده با نام container که وزن آن نیز ۱۰ است و در ادامه یک تگ p آورده شده که وزن  آن نیز ۱ است که مجموع اینها ۱۲ می‌شود و در ادامه‌ یک پاراگراف داریم که کلاس important به آن اختصاص داده شده است که وزن کلاس معادل ۱۰ و وزن خود پاراگراف معادل ۱ است در نتیجه مجموع آن ۱۱ شده که از دستور اول ضعیف تر است. &lt;/p&gt;
+
+&lt;p&gt;در مثال دوم ما دو کلاس container و content داریم و دو تگ article و blockquote که دو کلاس معادل ۲۰ و دو تگ معادل ۲ و مجموع معادل ۲۲ می‌شود ولی در ادامه ما یک تگ blockquote داریم و یک آیدی blockquote که وزنشان روی هم ۱۰۱ خواهد شد و به مراتب وزن بیشتری از دستور اول دارد و قطعا دستور دوم قوی‌تر بوده و اعمال خواهد شد. حالا چند مثال دیگر هم می‌آورم:&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;h1 + p {...} /* 0,0,0,2 */
+*.aside {...} /* 0,0,1,0 */
+html &amp;gt; body table tr[id=&amp;quot;totals&amp;quot;] td ul &amp;gt; li {...} /* 0,0,1,7 */
+li#answer {...} /* 0,1,0,1 */&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;زمانی که وزن دستورات مطرح می‌شود دیگر مکان قرار گرفتن دستورات مطرح نیست. دستور قوی‌تر اگر بالا تر از دستور ضعیف هم قرار بگیرد باز هم دستور قوی‌تر اعمال خواهد شد.&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;نکته مهم&lt;/h3&gt;
+
+&lt;p&gt;مقادیر عددی که برای تگ‌ها و کلاس‌ و آیدی‌ها و بقیه عناصر CSS در نظر گرفته شده مقادیری فرضی است. مثلا شرایط زیر را در نظر بگیرید:&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;.container .content .main .article .post .head-post .text .important .center .green .bold  {...}  /* 0,1,1,0 */
+#bold {...}  /* 0,1,0,0 */&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;در اینجا ما ۱۱ کلاس داریم که سلسه‌وار و در ادامه هم آمده اند و اگر بخواهیم وزن آن را حساب کنیم معادل ۱۱۰ خواهد شد و در ادامه یک آیدی داریم که وزنش معادل ۱۰۰ هست. اگر وزن را ملاک قرار دهیم دستور اول قوی‌تر است ولی اینطور نیست. سلسه مراتبی که در قالب ۶ مورد در بخش قبل توضیح داده شد به این شکل است که هر سطح در هیچ شرایطی نمی‌تواند سطح قوی‌تر از خود را خنثی کرده و آن را بازنویسی کند. در اینجا هم اگر شما ۱۰۰۰ کلاس هم در کنار هم قرار دهید نمی‌توانید یک آیدی را خنثی کنید. برای نمونه همیشه از مثال مدال‌های المپیک استفاده می‌کنم. در جدول بازی‌های المپیک داشتن یک طلا از هزاران نقره هم بیشتر است و کشوری که یک طلا داشته باشد در رتبه بالاتری از کشورهای دیگر که گاها ۱۰ مدال نقره دارند قرار می‌گیرد. در اینجا هم دقیقا شرایط بدین گونه است. البته چون اعداد را مضربی از ۱۰ در نظر گرفته‌اند خیلی بعید است که شما با شرایطی مواجه شوید که ۱۰ کلاس در کنار هم قرار بگیرد.&lt;/p&gt;
+
+&lt;h2 id=&quot;specificity--&quot;&gt;چه نکاتی را رعایت کنیم که با مشکلات specificity مواجه نشویم؟&lt;/h2&gt;
+
+&lt;p&gt;بارها در طراحی با شرایطی مواجه می‌شوید که دستوری می‌نویسید ولی بعد از refresh کردن صفحه هیچ تغییری در صفحه نمی‌بینید. بسیاری از مواقع دلیل این عدم تغییر این است که در جایی دیگر از فایل CSS شما دستوری نوشته شده است که وزنی بیشتر از وزن دستور شما دارد و اجازه نمی‌دهد که دستور شما اعمال شود. 
+برای اینکه با مشکلات ارجحیت دستورات مواجه نشوید پیشنهاد می‌کنیم این کارها را انجام دهید:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;هیچگاه از آیدی برای استایل دادن به یک عنصر در صفحه استفاده نکنید زیرا وزن بسیار زیادی دارد و برای خنثی کردنش مجبورید به دستور دیگرتان هم آیدی بدهید&lt;/li&gt;
+  &lt;li&gt;از &lt;code&gt;!important&lt;/code&gt; استفاده نکنید زیرا وزن بسیار بالایی دارد و با هیچ چیز قابل خنثی سازی و بازنویسی نیست و تنها کاری که می‌توانید انجام دهید این است که یک دستور CSS دیگر با وزن بالاتر بنویسید و به آن هم &lt;code&gt;!important&lt;/code&gt; بدهید&lt;/li&gt;
+  &lt;li&gt;تا جایی که امکان دارد دستورات را به شکل تو در تو ننویسید و در جایی که مجبورید دستورات را به شکل تو در تو بنویسید سعی کنید بیش از ۳ مرحله تو رفتگی نداشته باشید. مثلا اگر دستور &lt;code&gt;.container ul.nav&lt;/code&gt; را نوشته‌اید ولی دستور &lt;code&gt;.nav&lt;/code&gt; به تنهایی کار می‌کند بهتر است از دومی استفاده کنید و بی‌جهت وزن دستورات را بالا نبرید&lt;/li&gt;
+  &lt;li&gt;سعی کنید به جای نوشتن دستورات به شکل تو در تو از کلاس استفاده کنید. مثلا به جای نوشتن &lt;code&gt;.container .content article&lt;/code&gt; بهتر است به عنوان مثال کلاسی به نام &lt;code&gt;.post&lt;/code&gt; را تعریف کنید و آن را به تگ article اختصاص دهید. البته باید سعی کنید که در تعریف کلاس‌ها زیاده‌روی نکنید و تعداد کلاس‌ها رقم معقولی باشد.&lt;/li&gt;
+  &lt;li&gt;در صورتی که تیم شما در طرح از آیدی استفاده کرده بهتر است به جای به کار بردن خود آیدی از گزینشگر خصیصه استفاده کنید. مثلا به جای اینکه بنویسید &lt;code&gt;#container {...}&lt;/code&gt; بنویسید &lt;code&gt;[id=&quot;container&quot;] {...}&lt;/code&gt; که دقیقا همان کار را انجام می‌دهد ولی در اینجا دستور اول وزن ۱۰۰ دارد ولی دستور دوم وزنش ۱۰ است و خیلی راحت‌تر می‌توانید با نوشتن یک دستور دیگه آن را خنثی کرده و بازنویسی کنید.&lt;/li&gt;
+  &lt;li&gt;در شرایطی که می‌خواهید وزن یک دستور را بالا ببرید لازم نیست که به آن دستور کلاس دیگر اضافه کنید و یا تگ‌هایی که در مسیر رسیدن به آن تگ وجود دارد را ذکر کنید. تنها کافیست که همان کلاس را دوباره تکرار کنید. مثلا فرض کنید که شما کلاس &lt;code&gt;.content&lt;/code&gt; را دارید و می‌خواهید وزن آن را بالاتر ببرید. می‌توانید تگ‌ها و کلاس‌هایی که والد این تگ هستند را بنویسید مثلا به این شکل &lt;code&gt;html body .contaner .content&lt;/code&gt; که با این کار وزن دستور قبل را از ۱۰ به ۲۲ ارتقا خواهید داد ولی می‌توانید به جای اینکار همان کلاس را بدون فاصله چند بار به دنبال هم بنویسید به این شکل &lt;code&gt;.content.content.content&lt;/code&gt; که از این طریق وزن همان دستور قبل از ۱۰ به ۳۰ افزایش پیدا می‌کند و شما از هیچ کلاس دیگری استفاده نکرده‌اید.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;آیا همیشه باید وزن دستورات را به شکل دستی حساب کنیم؟&lt;/h2&gt;
+
+&lt;p&gt;احتیاجی به این کار نیست. مطالب این مقاله تنها برای این بود که با مفهوم ارجحیت دستورات آشنا شوید. در حال حاضر chrome inspector و firebug و همینطور بقیه inspector های موجود برای دیگر مرورگرها به شکل اتوماتیک وزن هر دستور را برای شما حساب می‌کنند و دستوراتی که وزن بیشتر داشته باشند را بالاتر می‌نویسند. مثلا به این تصویر دقت کنید:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://front-end.ir/post-images/sep-2014/inspector.png&quot; alt=&quot;کروم اینسپکتور&quot; class=&quot;img-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;همانطور که در تصویر مشخص است برخی از دستورات خط خورده‌اند. این دستورات توسط دستورات قویتر که همیشه بالاتر از دستورات خط خورده قرار می‌گیرند خنثی شده و بازنویسی شده اند. با این حساب شما تنها کافی‌است که از اینسپکتور استفاده کنید تا متوجه شوید که کدام دستور قوی‌تر است ولی در نهایت دانستن شیوه محاسبه ارجحیت دستورات اهمیت زیادی دارد و باید با آن آشنا باشید. &lt;/p&gt;
+
+&lt;h2 id=&quot;css---&quot;&gt;چطور متوجه شویم که مشکل موجود از ارجحیت دستورات CSS است یا خیر؟&lt;/h2&gt;
+
+&lt;p&gt;ممکن است دستوری را نوشته باشید ولی به عنصر مورد نظر شما اعمال نمی‌شود. راحت‌ترین راه برای فهمیدن اینکه مشکل از ارجحیت دستورات است یا نه این است که در آخر دستور از &lt;code&gt;!important&lt;/code&gt; استفاده کنید و به طور موقت وزن دستور را بالا ببرید اگر تغییر مورد نظر شما اعمال شود متوجه می‌شوید که یک جای دیگر و در یک قسمت دیگر از فایل CSS دستوری نوشته‌اید که وزن بیشتری دارد و اجازه نمی‌دهد دستور شما اعمال شود. البته همانطور که گفتم Inspector هم وزن دستورات را نشان می‌دهد و اگر به آن هم دقت کنید متوجه مشکل خواهید شد. &lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 12 Sep 2014 00:00:00 +0100</pubDate>
+        <link>http://front-end.ir/ui/css-specificity</link>
+        <guid isPermaLink="true">http://front-end.ir/ui/css-specificity</guid>
+        
+        <category>CSS</category>
+        
+        <category>ترفند</category>
+        
+        <category>آموزش</category>
+        
+        
+        <category>ui</category>
+        
+      </item>
     
       <item>
         <title>چطور در زمینه طراحی اینترفیس وب همیشه به روز باشیم</title>
