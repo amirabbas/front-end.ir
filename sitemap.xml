@@ -3,6 +3,12 @@
   
   
   <url>
+    <loc>http://front-end.ir/general/why-we-need-a-network-for-ui-ux-and-programming-resources</loc>
+    <lastmod>2014-09-16T00:00:00+01:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://front-end.ir/ui/css-specificity</loc>
     <lastmod>2014-09-12T00:00:00+01:00</lastmod>
     <priority>0.8</priority>
@@ -41,7 +47,7 @@
   
   <url>
     <loc>http://front-end.ir/</loc>
-    <lastmod>2014-09-12T19:41:17+01:00</lastmod>
+    <lastmod>2014-09-16T13:04:42+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
