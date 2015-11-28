@@ -1,0 +1,26 @@
+# Site settings
+title: front-end
+email: amirabbas.abdolali@gmail.com
+description: "اینجا درباره موضوعاتی در حوزه طراحی اینترفیس وب سایت می نویسم."
+baseurl: ""
+url: "http://front-end.ir"
+twitter_username: amir_abbas
+github_username:  amirabbas
+
+# Build settings
+markdown: kramdown
+permalink: /:categories/:title
+
+exclude: ["node_modules", "gulpfile.js", "package.json"]
+include: ['_config.yml']
+
+timezone: Asia/Tehran
+encoding:    utf-8
+highlighter: none
+sass:
+  style: :compressed
+gems:
+  - jekyll-redirect-from
+  - jekyll-sitemap
+
+disqus_comment: true
